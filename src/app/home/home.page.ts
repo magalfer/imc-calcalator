@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,20 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private toastController: ToastController) {}
+
+  onCalculate() {
+    console.log('Clicou!');
+  }
+
+  async showMessage() {
+    const toast = await this.toastController.create(
+      {
+        message: 'clicou!',
+        duration: 3000
+      }
+    ); 
+    toast.present();
+  }
 
 }
